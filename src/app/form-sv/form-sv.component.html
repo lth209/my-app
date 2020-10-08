@@ -1,0 +1,47 @@
+
+<div class="card">
+    <div *ngIf="isUpdate" class="card-header">Cập nhật thông tin SV: {{sv.name}}</div>
+    <div *ngIf="!isUpdate" class="card-header">Thêm thông tin sinh viên</div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="svForm">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group m-3">
+                    <input class="form-control " name="name"
+                    placeholder="Họ tên" [formControl]="nameCtrl">
+                    <div *ngIf="nameCtrl.errors?.required && (nameCtrl.dirty || nameCtrl.touched)"
+                class="alert alert-danger">Tên không được để trống</div>
+                    <div *ngIf="nameCtrl.errors?.minlength || nameCtrl.errors?.maxlength && (nameCtrl.dirty || nameCtrl.touched)"
+                class="alert alert-danger">Độ dài tên từ 6 đến 50</div>
+                </div>
+                <div class="form-group m-3">
+                    <input class="form-control" formControlName="ngaysinh" type="date">
+                    <div *ngIf="ngaysinhCtrl.invalid && (ngaysinhCtrl.dirty || ngaysinhCtrl.touched)"
+                class="alert alert-danger">Chọn ngày!</div>
+                </div>
+                <div class="form-group m-3">
+                    <select formControlName="lop" class="form-control" name="lop">
+                        <option *ngFor="let item of arrLop" value="{{item.id}}">{{item.name}}</option>
+                    </select>
+                    <div *ngIf="lopCtrl.invalid && (lopCtrl.dirty || lopCtrl.touched)"
+                class="alert alert-danger">Chọn lớp!</div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <label class="example-margin">Align:</label>
+                <mat-radio-group [(ngModel)]="labelPosition">
+                    <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="before">Before</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        
+        <div class="card-footer d-flex">
+            <button *ngIf="isUpdate"
+            class="btn btn-success ml-3">Sửa</button>
+            <button *ngIf="!isUpdate" 
+            class="btn btn-success mr-3">Thêm</button>
+            <button type='button' class="btn btn-danger ml-auto" (click)="closeClick()">Đóng</button>
+        </div>
+    </form>
+    
+</div>

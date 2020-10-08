@@ -1,0 +1,21 @@
+<div [hidden]="!isShow" > 
+    <input [(ngModel)]="en"/><br>
+    <input [(ngModel)]="vn"/>   
+</div>
+<button (click)="addWord()">add</button>
+
+<select [(ngModel)]="select">
+    <option value="0">All</option>
+    <option value="1">Memorized</option>
+    <option value="2">Not memorized</option>
+</select>
+<div class="card" *ngFor="let word of arrWords">
+    <ng-container *ngIf="getFilter(word.memorized)">
+        <p [ngStyle]="{color: word.memorized ? 'red' : 'green'}">
+            {{word.en}}
+        </p>
+        <p>{{word.vn}}</p><br>
+        <button (click)="deleteWord(word.id)">Delete</button>
+        <button (click)="changeStatus(word.id)">Change</button>
+    </ng-container>
+</div>
