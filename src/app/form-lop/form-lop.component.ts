@@ -27,6 +27,9 @@ export class FormLopComponent implements OnInit, OnChanges {
     if (changes.isUpdate != undefined)
     this.isUpdateLop = changes.isUpdate.currentValue;
     this.lopForm.reset();
+    //Set older data to input
+    this.nameCtrl.setValue(this.lop.name);
+    this.gvCtrl.setValue(this.lop.gv);
   }
   initForm(){
     this.nameCtrl =  this.fb.control('', [Validators.required, Validators.maxLength(20)]);

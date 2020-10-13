@@ -39,9 +39,15 @@ export class FormSVComponent implements OnInit, OnChanges {
   }
   
   ngOnChanges(changes: SimpleChanges): void {
+    if (changes.isUpdate != undefined)
     this.isUpdateSV = changes.isUpdate.currentValue;
     console.log(this.sv);
     this.svForm.reset();
+    //Set older data to input
+    this.nameCtrl.setValue(this.sv.name);
+    this.lopCtrl.setValue(this.sv.lop);
+    this.ngaysinhCtrl.setValue(this.sv.ngaysinh);
+    this.genderCtrl.setValue(this.sv.gender);
   }
   
   updateSV(){
