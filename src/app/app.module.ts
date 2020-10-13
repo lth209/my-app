@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LopComponent } from './lop/lop.component';
 import { AppMaterialModule } from './app-material.module';
 
+import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 
 @NgModule({
   declarations: [

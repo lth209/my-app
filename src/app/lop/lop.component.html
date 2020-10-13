@@ -8,15 +8,19 @@
             <th mat-header-cell *matHeaderCellDef> Tên </th>
             <td mat-cell *matCellDef="let i"> {{i.name}} </td>
         </ng-container>
+        <ng-container matColumnDef="gv">
+            <th mat-header-cell *matHeaderCellDef> Tên GV </th>
+            <td mat-cell *matCellDef="let i"> {{i.gv}} </td>
+        </ng-container>
         <ng-container matColumnDef="idbtn">
             <th mat-header-cell *matHeaderCellDef>
-                <button class="btn btn-primary" (click)="scollTo(target)">Thêm</button>
+                <button class="btn btn-primary" (click)="clickAddLop(target)">Thêm</button>
             </th>
             <td mat-cell *matCellDef="let i"> 
-                <button class="btn btn-danger" (click)="deleteSV(i.id)">
+                <button class="btn btn-danger mr-2" (click)="deleteLop(i.id)">
                     Xóa
                 </button>
-                <button class="btn btn-success ml-2" (click)="deleteSV(i.id)">Sửa</button> 
+                <button class="btn btn-success" (click)="updateLop(i.id, target)">Sửa</button> 
             </td>
         </ng-container>
 
@@ -25,11 +29,13 @@
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
-<ng-container >
-    <div #target>
-        
-    </div>
-</ng-container>
+<div #target class="m-3">
+    <ng-container *ngIf="isShow">
+        <app-form-lop [isUpdate]="isUpdate" [lop]="lop"
+        (getData)="getData($event)"
+        (closeBtn)="closeForm($event)"></app-form-lop>
+    </ng-container>
+</div>
 
 
 

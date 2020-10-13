@@ -18,16 +18,16 @@ export class SvComponent implements OnInit, AfterViewInit {
   formupdate: FormSVComponent;
 
   arrSV = [
-    { id: 1, name: 'Nguyen A', ngaysinh: '10/1', lop:1},
-    { id: 2, name: 'Nguyen B', ngaysinh: '10/1', lop:1},
-    { id: 3, name: 'Nguyen C', ngaysinh: '10/1', lop:2},
-    { id: 4, name: 'Nguyen D', ngaysinh: '10/1', lop:2},
-    { id: 5, name: 'Nguyen E', ngaysinh: '10/1', lop:3},
-    { id: 7, name: 'Nguyen B', ngaysinh: '10/1', lop:1},
-    { id: 8, name: 'Nguyen C', ngaysinh: '10/1', lop:2},
-    { id: 9, name: 'Nguyen D', ngaysinh: '10/1', lop:2},
-    { id: 10, name: 'Nguyen E', ngaysinh: '10/1', lop:3},
-    { id: 11, name: 'Nguyen F', ngaysinh: '10/1', lop:3}
+    { id: 1, name: 'Nguyen A', ngaysinh: '10/1', lop:1, gender: 'nam'},
+    { id: 2, name: 'Nguyen B', ngaysinh: '10/1', lop:1, gender: 'nam'},
+    { id: 3, name: 'Nguyen C', ngaysinh: '10/1', lop:2, gender: 'nam'},
+    { id: 4, name: 'Nguyen D', ngaysinh: '10/1', lop:2, gender: 'nam'},
+    { id: 5, name: 'Nguyen E', ngaysinh: '10/1', lop:3, gender: 'nam'},
+    { id: 7, name: 'Nguyen B', ngaysinh: '10/1', lop:1, gender: 'nam'},
+    { id: 8, name: 'Nguyen C', ngaysinh: '10/1', lop:2, gender: 'nam'},
+    { id: 9, name: 'Nguyen D', ngaysinh: '10/1', lop:2, gender: 'nam'},
+    { id: 10, name: 'Nguyen E', ngaysinh: '10/1', lop:3, gender: 'nam'},
+    { id: 11, name: 'Nguyen F', ngaysinh: '10/1', lop:3, gender: 'nam'}
   ];
   arrLop = [
     {id: 1, name: 'a'},
@@ -35,7 +35,7 @@ export class SvComponent implements OnInit, AfterViewInit {
     {id: 3, name: 'c'}
   ];
 
-  displayColumn: string[] = ['id','name','ngaysinh', 'lop', 'idbtn'];
+  displayColumn: string[] = ['id','name','ngaysinh', 'lop', 'gender', 'idbtn'];
   dataSource = new MatTableDataSource(this.arrSV);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -51,9 +51,6 @@ export class SvComponent implements OnInit, AfterViewInit {
     this.dataSource.data = this.arrSV;
   }
 
-  deleteLop(id: number){
-    this.arrLop.splice(this.arrLop.findIndex(p => p.id === id),1);
-  }
   nameLop(id : number){
     var res =this.arrLop.find(p=>p.id===id).name;
     if (res == undefined){
@@ -75,14 +72,6 @@ export class SvComponent implements OnInit, AfterViewInit {
     this.scrollToEl(el);
   }
 
-  onSubmitLop(test){
-    console.log(test);
-    this.arrLop.push({
-      id: this.arrLop[this.arrLop.length-1].id+1,
-      name: test.form.controls.name.value
-    });
-  }
-
   getDataSV(value){
     if (this.isUpdate){
       console.log(value);
@@ -97,6 +86,7 @@ export class SvComponent implements OnInit, AfterViewInit {
         name: value.name,
         lop: value.lop,
         ngaysinh: value.ngaysinh,
+        gender: value.gender
       });
       this.dataSource.data = this.arrSV;
     }

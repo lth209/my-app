@@ -1,0 +1,6 @@
+md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
+    background-color: rgb(67, 174, 86);
+  }
+  md-radio-button.md-default-theme.md-checked .md-off, md-radio-button.md-checked .md-off {
+    border-color: rgb(67, 174, 86);
+  }

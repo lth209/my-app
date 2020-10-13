@@ -1,16 +1,35 @@
 
 <div class="card">
-    <div class="card-header">Update ID: {{id}}</div>
-    <form class="p-3" (ngSubmit)="onSubmit()" [formGroup]="lopForm">
-        <div class="form-group">
-            <input class="form-control" name="name"
-            placeholder="Họ tên" [formControl]="nameCtrl">
-            <div *ngIf="nameCtrl.errors?.required && (nameCtrl.dirty || nameCtrl.touched)"
-        class="alert alert-danger">Tên không được để trống</div>
-            <div *ngIf="nameCtrl.errors?.maxlength && (nameCtrl.dirty || nameCtrl.touched)"
-        class="alert alert-danger">Độ dài bé hơn 20</div>
+    <div *ngIf="isUpdateLop" class="card-header">Cập nhật thông tin lớp: {{lop.name}}</div>
+    <div *ngIf="!isUpdateLop" class="card-header">Thêm thông tin lớp</div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="lopForm">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group m-3">
+                    <input class="form-control " name="name"
+                    placeholder="Tên lớp" [formControl]="nameCtrl">
+                    <div *ngIf="nameCtrl.errors?.required && (nameCtrl.dirty || nameCtrl.touched)"
+                class="alert alert-danger">Tên không được để trống</div>
+                    <div *ngIf="nameCtrl.errors?.minlength || nameCtrl.errors?.maxlength && (nameCtrl.dirty || nameCtrl.touched)"
+                class="alert alert-danger">Độ dài tên từ 6 đến 50</div>
+                </div>
+                <div class="form-group m-3">
+                    <input class="form-control" [formControl]="gvCtrl" placeholder="Giảng viên">
+                    <div *ngIf="gvCtrl.errors?.required && (gvCtrl.dirty || gvCtrl.touched)"
+                    class="alert alert-danger">Tên gv không được để trống!</div>
+                    <div *ngIf="gvCtrl.errors?.minlength || gvCtrl.errors?.maxlength && (gvCtrl.dirty || gvCtrl.touched)"
+                    class="alert alert-danger">Độ dài tên từ 6 đến 50</div>
+                </div>
+            </div>
         </div>
         
-        <button [disabled]=lopForm.invalid>Update</button>
+        <div class="card-footer d-flex">
+            <button *ngIf="isUpdateLop" [disabled]="lopForm.invalid" 
+            class="btn btn-success ml-3">Sửa</button>
+            <button *ngIf="!isUpdateLop" [disabled]="lopForm.invalid" 
+            class="btn btn-success mr-3">Thêm</button>
+            <button type='button' class="btn btn-danger ml-auto" (click)="closeClick()">Đóng</button>
+        </div>
     </form>
+    
 </div>
