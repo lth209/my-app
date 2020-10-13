@@ -18,16 +18,16 @@ export class SvComponent implements OnInit, AfterViewInit {
   formupdate: FormSVComponent;
 
   arrSV = [
-    { id: 1, name: 'Nguyen A', ngaysinh: '10/1', lop:1, gender: 'nam'},
-    { id: 2, name: 'Nguyen B', ngaysinh: '10/1', lop:1, gender: 'nam'},
-    { id: 3, name: 'Nguyen C', ngaysinh: '10/1', lop:2, gender: 'nam'},
-    { id: 4, name: 'Nguyen D', ngaysinh: '10/1', lop:2, gender: 'nam'},
-    { id: 5, name: 'Nguyen E', ngaysinh: '10/1', lop:3, gender: 'nam'},
-    { id: 7, name: 'Nguyen B', ngaysinh: '10/1', lop:1, gender: 'nam'},
-    { id: 8, name: 'Nguyen C', ngaysinh: '10/1', lop:2, gender: 'nam'},
-    { id: 9, name: 'Nguyen D', ngaysinh: '10/1', lop:2, gender: 'nam'},
-    { id: 10, name: 'Nguyen E', ngaysinh: '10/1', lop:3, gender: 'nam'},
-    { id: 11, name: 'Nguyen F', ngaysinh: '10/1', lop:3, gender: 'nam'}
+    { id: 1, name: 'Nguyen A', ngaysinh: '2020-11-04', lop:1, gender: 'nam'},
+    { id: 2, name: 'Nguyen B', ngaysinh: '2020-11-04', lop:1, gender: 'nam'},
+    { id: 3, name: 'Nguyen C', ngaysinh: '2020-11-04', lop:2, gender: 'nam'},
+    { id: 4, name: 'Nguyen D', ngaysinh: '2020-11-04', lop:2, gender: 'nam'},
+    { id: 5, name: 'Nguyen E', ngaysinh: '2020-11-04', lop:3, gender: 'nam'},
+    { id: 7, name: 'Nguyen B', ngaysinh: '2020-11-04', lop:1, gender: 'nam'},
+    { id: 8, name: 'Nguyen C', ngaysinh: '2020-11-04', lop:2, gender: 'nam'},
+    { id: 9, name: 'Nguyen D', ngaysinh: '2020-11-04', lop:2, gender: 'nam'},
+    { id: 10, name: 'Nguyen E', ngaysinh: '2020-11-04', lop:3, gender: 'nam'},
+    { id: 11, name: 'Nguyen F', ngaysinh: '2020-11-04', lop:3, gender: 'nam'}
   ];
   arrLop = [
     {id: 1, name: 'a'},
